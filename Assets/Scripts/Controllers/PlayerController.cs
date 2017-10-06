@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetKeyDown(m_fire))
 		{
 			Instantiate(m_projectile, m_spawnPoint.position, transform.rotation, m_parent);
-			//Instantiate(original,position,rotation,parent)
 		}
 	}
 }
