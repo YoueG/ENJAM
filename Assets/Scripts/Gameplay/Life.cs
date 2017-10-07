@@ -19,4 +19,12 @@ public class Life : MonoBehaviour
 	{
 		m_jaugeMat.SetFloat("_Ratio", m_life);
 	}
+
+	public void TakeDamages(float damages)
+	{
+		m_life -= damages;
+
+		if (m_life <= 0)
+			GameManager.Instance.EndGame();
+	}
 }
