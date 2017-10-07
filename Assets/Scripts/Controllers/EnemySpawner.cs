@@ -12,11 +12,6 @@ public class EnemySpawner : MonoBehaviour
 	int m_divisionsNumber;
 	[SerializeField, Range(0,50)]
 	float m_radius;
-	
-    // Initializes the main controller spawner from inspector values
-	void Start ()
-    {
-	}
 
 	Vector3 getRandomDivisionPos(int division)
 	{
