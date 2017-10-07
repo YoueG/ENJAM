@@ -26,8 +26,6 @@ public class EnemySpawner : MonoBehaviour
 		float x = transform.position.x + m_radius * Mathf.Cos(q);
 		float z = transform.position.z + m_radius * Mathf.Sin(q);
 
-		print(new Vector3(x, transform.position.y, z));
-
 		return new Vector3(x, transform.position.y, z);
 	}
 

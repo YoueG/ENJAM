@@ -8,7 +8,7 @@ struct Wave
 	[SerializeField]
 	public int ennemiesNumer;
 	[SerializeField]
-	public int quarter;
+	public int division;
 }
 
 public class GameManager : Singleton<GameManager>
@@ -24,10 +24,7 @@ public class GameManager : Singleton<GameManager>
 
 	void Start ()
 	{
-		m_enemySpawnerMainController.Spawn( 1, m_waves[0].ennemiesNumer);
-		m_enemySpawnerMainController.Spawn( 2, m_waves[0].ennemiesNumer);
-		m_enemySpawnerMainController.Spawn( 3, m_waves[0].ennemiesNumer);
-		m_enemySpawnerMainController.Spawn( 0, m_waves[0].ennemiesNumer);
+		StartWave(m_waves[0]);
 	}
 	
 	void Update()
@@ -36,9 +33,32 @@ public class GameManager : Singleton<GameManager>
 			m_gameTime += Time.deltaTime;
 	}
 
-	public void EndGame()
+	int m_currentWave = 0;
+	void StartNextWave()
 	{
-		m_alive = false;
+		if (++m_currentWave >= m_waves.Length)
+		{
+			EndGame(true);
+			return;
+		}
+
+		StartWave(m_waves[m_currentWave]);
+	}
+
+	void StartWave(Wave wave)
+	{
+		m_enemySpawnerMainController.Spawn(wave.division, wave.ennemiesNumer);
+		Invoke("StartNextWave", wave.delay);
+	}
+
+	public void EndGame(bool victory)
+	{
+		if(victory)
+		{
+
+		}
+		else
+			m_alive = false;
 	}
 
 	public float GetGameTime()

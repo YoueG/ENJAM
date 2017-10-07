@@ -25,6 +25,6 @@ public class Life : MonoBehaviour
 		m_life -= damages;
 
 		if (m_life <= 0)
-			GameManager.Instance.EndGame();
+			GameManager.Instance.EndGame(false);
 	}
 }
