@@ -4,13 +4,18 @@
 struct Wave
 {
 	[SerializeField]
-	float delay;
+	public float delay;
 	[SerializeField]
-	int ennemiesNumer;
+	public int ennemiesNumer;
+	[SerializeField]
+	public int quarter;
 }
 
 public class GameManager : Singleton<GameManager>
 {
+	[SerializeField]
+	EnemySpawner m_enemySpawnerMainController;
+
 	[SerializeField]
 	Wave[] m_waves;
 
@@ -19,7 +24,10 @@ public class GameManager : Singleton<GameManager>
 
 	void Start ()
 	{
-
+		m_enemySpawnerMainController.Spawn( 1, m_waves[0].ennemiesNumer);
+		m_enemySpawnerMainController.Spawn( 2, m_waves[0].ennemiesNumer);
+		m_enemySpawnerMainController.Spawn( 3, m_waves[0].ennemiesNumer);
+		m_enemySpawnerMainController.Spawn( 0, m_waves[0].ennemiesNumer);
 	}
 	
 	void Update()

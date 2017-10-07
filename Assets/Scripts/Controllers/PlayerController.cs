@@ -2,6 +2,9 @@
 
 public class PlayerController : MonoBehaviour
 {
+	[SerializeField]
+	Rigidbody m_player;
+
 	[Header("Controls")]
 	[SerializeField]
 	KeyCode m_left;
@@ -33,13 +36,10 @@ public class PlayerController : MonoBehaviour
 	GameObject m_projectile;
 	[SerializeField]
 	Transform m_spawnPoint, m_parent;
-
-	Rigidbody m_rigidbody;
 	
 	void Start ()
 	{
 		m_minPosZ = m_ship.transform.position.z;
-		m_rigidbody = GetComponent<Rigidbody>();
 
 		m_nextShotTime = 0;
 	}
@@ -48,17 +48,17 @@ public class PlayerController : MonoBehaviour
 	{
 		if(Input.GetKey(m_left))
 		{
-			if (m_rigidbody.angularVelocity.y < 0)
-				m_rigidbody.angularVelocity = new Vector3(0, 0, 0);
+			if (m_player.angularVelocity.y < 0)
+				m_player.angularVelocity = new Vector3(0, 0, 0);
 			else
-				m_rigidbody.angularVelocity = new Vector3(0, m_xSpeed * Time.deltaTime, 0);
+				m_player.angularVelocity = new Vector3(0, m_xSpeed * Time.deltaTime, 0);
 		}
 		else if(Input.GetKey(m_right))
 		{
-			if (m_rigidbody.angularVelocity.y > 0)
-				m_rigidbody.angularVelocity = new Vector3(0, 0, 0);
+			if (m_player.angularVelocity.y > 0)
+				m_player.angularVelocity = new Vector3(0, 0, 0);
 			else
-				m_rigidbody.angularVelocity = new Vector3(0, -m_xSpeed * Time.deltaTime, 0);
+				m_player.angularVelocity = new Vector3(0, -m_xSpeed * Time.deltaTime, 0);
 		}
 
 		if(Input.GetKey(m_up))
