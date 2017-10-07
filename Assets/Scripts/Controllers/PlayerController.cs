@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField, Range(0, 10)]
 	float m_range;
 
-	[SerializeField, Range(0, 30)]
+	[SerializeField, Range(0, 100)]
 	float m_xSpeed;
 	[SerializeField, Range(0, 30)]
 	float m_zSpeed;

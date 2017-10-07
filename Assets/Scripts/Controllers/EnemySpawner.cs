@@ -20,7 +20,8 @@ public class EnemySpawner : MonoBehaviour
 
 	Vector3 getRandomDivisionPos(int division)
 	{
-		float q = division * 2 * Mathf.PI/ m_divisionsNumber;
+		float range = 1f / m_divisionsNumber;
+		float q = (division + Random.Range(-range, range)) * 2 * Mathf.PI/ m_divisionsNumber;
 		
 		// Getting the coordinate of a point on the circle
 		float x = transform.position.x + m_radius * Mathf.Cos(q);
@@ -38,10 +39,12 @@ public class EnemySpawner : MonoBehaviour
 	public void Spawn(int division, int count)
     {
 		GameObject ennemy;
-		
+
+		Vector3 randomPos = getRandomDivisionPos(division);
+
 		for (int n = 0; n < count; ++n)
 		{
-			ennemy = Instantiate(ennemyPrefab, getRandomDivisionPos(division), Quaternion.identity); // Randomizes spawns location
+			ennemy = Instantiate(ennemyPrefab, randomPos, Quaternion.identity); // Randomizes spawns location
 			ennemy.transform.parent = m_parent;
 		}
 	}
