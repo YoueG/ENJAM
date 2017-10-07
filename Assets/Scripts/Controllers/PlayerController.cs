@@ -25,7 +25,10 @@ public class PlayerController : MonoBehaviour
 	[SerializeField, Range(0, 30)]
 	float m_zSpeed;
 
-	[Header("Shot")]
+	[Header("Shot"), Range(0,10)]
+	[SerializeField]
+	float m_reloadTime;
+	float m_nextShotTime;
 	[SerializeField]
 	GameObject m_projectile;
 	[SerializeField]
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour
 	{
 		m_minPosZ = m_ship.transform.position.z;
 		m_rigidbody = GetComponent<Rigidbody>();
+
+		m_nextShotTime = 0;
 	}
 	
 	void Update ()
@@ -69,10 +74,15 @@ public class PlayerController : MonoBehaviour
 											Mathf.MoveTowards(m_ship.localPosition.z, m_minPosZ + (-m_range), m_zSpeed * Time.deltaTime));
 		}
 
-		if (Input.GetKeyDown(m_fire))
+		if (Input.GetKeyDown(m_fire) && m_nextShotTime <= 0)
 		{
+			m_nextShotTime = m_reloadTime;
 			GameObject newProjectile = Instantiate(m_projectile, m_spawnPoint.position, transform.rotation, m_spawnPoint);
 			newProjectile.GetComponent<Projectile>().SetParentOnCollision(m_parent);
+		}
+		else
+		{
+			m_nextShotTime -= Time.deltaTime;
 		}
 	}
 }
