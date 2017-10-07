@@ -10,6 +10,9 @@ public class Ennemy : MonoBehaviour
 	[SerializeField]
 	Animator m_animator;
 
+	[SerializeField, Range(0,10)]
+	float m_collisionForce;
+
 	void Start()
 	{
 		m_buste.transform.localScale = new Vector3(Random.Range(0, 2) == 1 ? -1 : 1, 1, 1);
@@ -21,14 +24,20 @@ public class Ennemy : MonoBehaviour
 	{
 		if(collision.gameObject.CompareTag("Projectile"))
 		{
-			Die();
+			Die(collision.contacts[0].normal);
 		}
 	}
 
-	void Die()
+	void Die(Vector3 vel)
 	{
 		GetComponent<NavMeshAgent>().enabled = false;
-		GetComponent<Collider>().enabled = false;
+		//GetComponent<Collider>().enabled = false;
+
+		Rigidbody rgbd = GetComponent<Rigidbody>();
+		rgbd.useGravity = true;
+		rgbd.velocity = vel * m_collisionForce;
+		
+
 		m_animator.SetBool("Dead", true);
 	}
 }
