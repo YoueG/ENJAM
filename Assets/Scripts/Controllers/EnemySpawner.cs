@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using UnityEditor;
 
 public class EnemySpawner : MonoBehaviour
@@ -7,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
 	GameObject ennemyPrefab;
 	[SerializeField]
 	Transform m_parent;
+	[SerializeField]
+	Transform m_friend;
 
 	[SerializeField]
 	int m_divisionsNumber;
@@ -41,6 +44,7 @@ public class EnemySpawner : MonoBehaviour
 		{
 			ennemy = Instantiate(ennemyPrefab, randomPos, Quaternion.identity); // Randomizes spawns location
 			ennemy.transform.parent = m_parent;
+			ennemy.GetComponent<NavMeshAgent>().SetDestination(m_friend.position);
 		}
 	}
 }
