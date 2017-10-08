@@ -37,11 +37,12 @@ public class Ennemy : MonoBehaviour
 		m_weaponParent.GetChild(Random.Range(0, m_weaponParent.childCount)).gameObject.SetActive(true);
 	}
 
-	public void SetPattern(Pattern pattern, Vector3 target)
+	public void SetPattern(Pattern pattern, Vector3 target, float speed)
 	{
 		m_pattern = pattern;
 		m_target = target;
 		m_agent = GetComponent<NavMeshAgent>();
+		m_agent.speed = speed;
 
 		if (m_pattern == Pattern.Random)
 			m_pattern = (Pattern)Random.Range(1, 5);

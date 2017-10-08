@@ -11,7 +11,7 @@ struct Wave
 	public Vector2 countLimits;
 	[SerializeField, Tooltip("0 = Random")]
 	public int division;
-	[SerializeField, Tooltip("0 = Random")]
+	[SerializeField, Tooltip("0 = Random"), Range(0,2)]
 	public float speed;
 	[SerializeField]
 	public Pattern pattern;
@@ -53,7 +53,7 @@ public class GameManager : Singleton<GameManager>
 
 	void StartWave(Wave wave)
 	{
-		m_enemySpawnerMainController.Spawn(wave.division, (int)Random.Range(wave.countLimits.x, wave.countLimits.y), wave.pattern);
+		m_enemySpawnerMainController.Spawn(wave.division, (int)Random.Range(wave.countLimits.x, wave.countLimits.y), wave.pattern, wave.speed);
 		Invoke("StartNextWave", wave.delay);
 	}
 
