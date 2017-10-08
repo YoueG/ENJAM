@@ -19,6 +19,14 @@ public struct Wave
 	public Pattern pattern;
 }
 
+enum GameState
+{
+	Intro,
+	Tutorial,
+	Main,
+	End
+}
+
 public class GameManager : Singleton<GameManager>
 {
 	[SerializeField]
@@ -27,20 +35,47 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField]
 	Wave[] m_waves;
 
+	[SerializeField]
+	Animator m_UIAnimator;
+
+	GameState m_state = GameState.Intro;
+
 	bool m_alive = true;
 	float m_gameTime = 0;
 	float m_nextWaveTime;
-
-	void Start ()
-	{
-		m_nextWaveTime = Time.time + m_waves[0].time;
-		StartWave();
-	}
 	
+	float m_tutoTime = 5;
+	float m_tutoStartTime;
 	void Update()
 	{
-		if (m_alive)
-			m_gameTime += Time.deltaTime;
+		switch (m_state)
+		{
+			case GameState.Intro:
+				if (Input.anyKeyDown)
+				{
+					m_UIAnimator.Play("Intro_End");
+					m_tutoStartTime = Time.time;
+					m_state++;
+				}
+				break;
+			case GameState.Tutorial:
+				if(Time.time > m_tutoStartTime + m_tutoTime)
+				{
+					m_UIAnimator.Play("Tuto_End");
+					m_nextWaveTime = Time.time + m_waves[0].time;
+					StartWave();
+					m_state++;
+				}
+				break;
+			case GameState.Main:
+				if (m_alive)
+				{
+					m_gameTime += Time.deltaTime;
+				}
+				break;
+			case GameState.End:
+				break;
+		}
 	}
 
 	int m_currentWave = 0;
@@ -75,6 +110,9 @@ public class GameManager : Singleton<GameManager>
 		}
 		else
 			m_alive = false;
+
+		m_UIAnimator.Play("End_Start");
+		m_gameTime++;
 	}
 
 	public float GetGameTime()
