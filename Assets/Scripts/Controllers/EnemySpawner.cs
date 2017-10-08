@@ -34,18 +34,17 @@ public class EnemySpawner : MonoBehaviour
 		Handles.DrawWireDisc(transform.position, Vector3.up, m_radius);
 	}
 	
-	public void Spawn(int division, int count, Pattern pattern, float speed)
+	public void Spawn(Wave wave)
     {
 		GameObject ennemy;
-		Vector3 randomPos = getRandomDivisionPos(division);
+		Vector3 randomPos = getRandomDivisionPos(wave.division == -1 ? Random.Range(0, 4) : wave.division);
 
-		for (int n = 0; n < count; ++n)
+		for (int n = 0; n < (int)Random.Range(wave.countLimits.x, wave.countLimits.y); ++n)
 		{
 			ennemy = Instantiate(ennemyPrefab, randomPos + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)), Quaternion.identity); // Randomizes spawns location
 			ennemy.transform.parent = m_parent;
 
-			ennemy.GetComponent<Ennemy>().SetPattern(pattern, m_friend.position, speed);
-			//ennemy.GetComponent<NavMeshAgent>().SetDestination(m_friend.position);
+			ennemy.GetComponent<Ennemy>().SetPattern(wave.pattern, m_friend.position, wave.speed);
 		}
 	}
 }

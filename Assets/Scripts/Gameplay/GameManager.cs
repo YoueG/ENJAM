@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-struct Wave
+public struct Wave
 {
-	[SerializeField, Tooltip("0 = Random")]
+	[SerializeField]
 	public float delay;
-	[SerializeField, Tooltip("0 = Random")]
+	[SerializeField]
 	public float time;
+	[SerializeField, Range(0.5f,10f)]
+	public float spawnTimeMin, spawnTimeMax;
 	[SerializeField]
 	public Vector2 countLimits;
-	[SerializeField, Tooltip("0 = Random")]
+	[SerializeField, Tooltip("-1 = Random")]
 	public int division;
-	[SerializeField, Tooltip("0 = Random"), Range(0,2)]
+	[SerializeField, Range(0,2)]
 	public float speed;
 	[SerializeField]
 	public Pattern pattern;
@@ -27,10 +29,12 @@ public class GameManager : Singleton<GameManager>
 
 	bool m_alive = true;
 	float m_gameTime = 0;
+	float m_nextWaveTime;
 
 	void Start ()
 	{
-		StartWave(m_waves[0]);
+		m_nextWaveTime = Time.time + m_waves[0].time;
+		StartWave();
 	}
 	
 	void Update()
@@ -48,20 +52,26 @@ public class GameManager : Singleton<GameManager>
 			return;
 		}
 
-		StartWave(m_waves[m_currentWave]);
+		m_nextWaveTime = Time.time + m_waves[m_currentWave].time;
+		StartWave();
 	}
-
-	void StartWave(Wave wave)
+	
+	void StartWave()
 	{
-		m_enemySpawnerMainController.Spawn(wave.division, (int)Random.Range(wave.countLimits.x, wave.countLimits.y), wave.pattern, wave.speed);
-		Invoke("StartNextWave", wave.delay);
+		if(Time.time < m_nextWaveTime)
+		{
+			m_enemySpawnerMainController.Spawn(m_waves[m_currentWave]);
+			Invoke("StartWave", Random.Range(m_waves[m_currentWave].spawnTimeMin, m_waves[m_currentWave].spawnTimeMin));
+		}
+		else
+			Invoke("StartNextWave", m_waves[m_currentWave].delay);
 	}
 
 	public void EndGame(bool victory)
 	{
 		if(victory)
 		{
-
+			print("Victory");
 		}
 		else
 			m_alive = false;
