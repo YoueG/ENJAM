@@ -39,7 +39,12 @@ public class EnemySpawner : MonoBehaviour
 		GameObject ennemy;
 		Vector3 randomPos = getRandomDivisionPos(wave.division == -1 ? Random.Range(0, 4) : wave.division);
 
-		for (int n = 0; n < (int)Random.Range(wave.countLimits.x, wave.countLimits.y); ++n)
+		int ennemiesCount = (int)Random.Range(wave.countLimits.x, wave.countLimits.y);
+
+		if(ennemiesCount > 5)
+			AkSoundEngine.PostEvent("enemies_group_pop", gameObject);
+
+		for (int n = 0; n < ennemiesCount; ++n)
 		{
 			ennemy = Instantiate(ennemyPrefab, randomPos + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)), Quaternion.identity); // Randomizes spawns location
 			ennemy.transform.parent = m_parent;

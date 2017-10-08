@@ -13,6 +13,11 @@ public class Life : MonoBehaviour
 	{
 	}
 
+	void Repare()
+	{
+		AkSoundEngine.PostEvent("ufo_reparation", gameObject);
+	}
+
 	public void TakeDamages(float damages)
 	{
 		m_life -= damages;

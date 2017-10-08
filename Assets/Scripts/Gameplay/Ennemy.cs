@@ -58,7 +58,10 @@ public class Ennemy : MonoBehaviour
 		Vector3 toTarget = m_target - transform.position;
 
 		if (toTarget.magnitude < 1)
+		{
 			m_agent.SetDestination(m_target);
+			AkSoundEngine.PostEvent("enemies_climbing", gameObject);
+		}
 		else
 		{
 			Vector3 offset = transform.position;
@@ -99,7 +102,12 @@ public class Ennemy : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Projectile"))
 		{
+			AkSoundEngine.PostEvent("cow_strike_enemies", gameObject);
 			Die(collision.contacts[0].normal);
+		}
+		//else if (collision.gameObject.CompareTag("Friend"))
+		{
+			AkSoundEngine.PostEvent("enemies_eating", gameObject);
 		}
 	}
 }

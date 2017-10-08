@@ -46,6 +46,12 @@ public class GameManager : Singleton<GameManager>
 	
 	float m_tutoTime = 5;
 	float m_tutoStartTime;
+
+	void Start()
+	{
+		AkSoundEngine.PostEvent("music_menu", gameObject);
+	}
+
 	void Update()
 	{
 		switch (m_state)
@@ -62,6 +68,7 @@ public class GameManager : Singleton<GameManager>
 				if(Time.time > m_tutoStartTime + m_tutoTime)
 				{
 					m_UIAnimator.Play("Tuto_End");
+					AkSoundEngine.PostEvent("music_game", gameObject);
 					m_nextWaveTime = Time.time + m_waves[0].time;
 					StartWave();
 					m_state++;
@@ -88,6 +95,7 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		m_nextWaveTime = Time.time + m_waves[m_currentWave].time;
+
 		StartWave();
 	}
 	
@@ -106,10 +114,13 @@ public class GameManager : Singleton<GameManager>
 	{
 		if(victory)
 		{
-			print("Victory");
+			AkSoundEngine.PostEvent("end_win", gameObject);
 		}
 		else
+		{
 			m_alive = false;
+			AkSoundEngine.PostEvent("end_lose", gameObject);
+		}
 
 		m_UIAnimator.Play("End_Start");
 		m_gameTime++;
