@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -28,12 +30,14 @@ public class EnemySpawner : MonoBehaviour
 		return new Vector3(x, transform.position.y, z);
 	}
 
+#if UNITY_EDITOR
 	void OnDrawGizmos()
 	{
 		Handles.color = Color.green;
 		Handles.DrawWireDisc(transform.position, Vector3.up, m_radius);
 	}
-	
+#endif
+
 	public void Spawn(Wave wave)
     {
 		GameObject ennemy;

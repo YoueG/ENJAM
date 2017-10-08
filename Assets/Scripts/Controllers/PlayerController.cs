@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	Transform m_spawnPoint, m_parent;
 
+	[SerializeField]
+	float m_cowLife;
+
 	void Start ()
 	{
 		m_minPosZ = m_ship.transform.position.z;
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour
 			m_nextShotTime = m_reloadTime;
 			GameObject newProjectile = Instantiate(m_projectile, m_spawnPoint.position, transform.rotation, m_spawnPoint);
 			newProjectile.GetComponent<Projectile>().SetParentOnCollision(m_parent);
+			Destroy(newProjectile, m_cowLife);
 		}
 		else
 		{
