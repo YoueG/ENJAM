@@ -81,6 +81,11 @@ public class GameManager : Singleton<GameManager>
 				if (m_alive)
 				{
 					m_gameTime += Time.deltaTime;
+
+					if(m_gameTime > 270)
+					{
+						EndGame (true);
+					}
 				}
 				break;
 			case GameState.End:
@@ -93,7 +98,6 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (++m_currentWave >= m_waves.Length)
 		{
-			EndGame(true);
 			return;
 		}
 
@@ -118,14 +122,15 @@ public class GameManager : Singleton<GameManager>
 		if(victory)
 		{
 			AkSoundEngine.PostEvent("end_win", gameObject);
+			m_UIAnimator.Play("End_Start_Win");
 		}
 		else
 		{
 			m_alive = false;
 			AkSoundEngine.PostEvent("end_lose", gameObject);
+			m_UIAnimator.Play("End_Start_Lose");
 		}
-
-		m_UIAnimator.Play("End_Start");
+			
 		m_gameTime++;
 	}
 

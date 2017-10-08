@@ -37,12 +37,6 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	Transform m_spawnPoint, m_parent;
 
-    [Tooltip("The rotation speed of the ship while moving")]
-    public float m_rotatationSpeed;
-
-    [Tooltip("The cow will be destroy in x seconds")]
-    public float m_cowDestructionDelay;
-	
 	void Start ()
 	{
 		m_minPosZ = m_ship.transform.position.z;
@@ -58,8 +52,6 @@ public class PlayerController : MonoBehaviour
 				m_player.angularVelocity = new Vector3(0, 0, 0);
 			else
 				m_player.angularVelocity = new Vector3(0, m_xSpeed * Time.deltaTime, 0);
-
-            m_ship.Rotate(new Vector3(0.0f, Time.deltaTime * m_rotatationSpeed, 0.0f));
         }
 		else if(Input.GetKey(m_right))
 		{
@@ -67,8 +59,6 @@ public class PlayerController : MonoBehaviour
 				m_player.angularVelocity = new Vector3(0, 0, 0);
 			else
 				m_player.angularVelocity = new Vector3(0, -m_xSpeed * Time.deltaTime, 0);
-
-            m_ship.Rotate(new Vector3(0.0f, Time.deltaTime * -m_rotatationSpeed, 0.0f));
         }
 
 		if(Input.GetKey(m_up))
@@ -90,7 +80,6 @@ public class PlayerController : MonoBehaviour
 			m_nextShotTime = m_reloadTime;
 			GameObject newProjectile = Instantiate(m_projectile, m_spawnPoint.position, transform.rotation, m_spawnPoint);
 			newProjectile.GetComponent<Projectile>().SetParentOnCollision(m_parent);
-            Destroy(newProjectile, m_cowDestructionDelay);
 		}
 		else
 		{
