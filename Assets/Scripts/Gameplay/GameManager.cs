@@ -3,12 +3,18 @@
 [System.Serializable]
 struct Wave
 {
-	[SerializeField]
+	[SerializeField, Tooltip("0 = Random")]
 	public float delay;
+	[SerializeField, Tooltip("0 = Random")]
+	public float time;
 	[SerializeField]
-	public int ennemiesNumer;
-	[SerializeField]
+	public Vector2 countLimits;
+	[SerializeField, Tooltip("0 = Random")]
 	public int division;
+	[SerializeField, Tooltip("0 = Random")]
+	public float speed;
+	[SerializeField]
+	public Pattern pattern;
 }
 
 public class GameManager : Singleton<GameManager>
@@ -47,7 +53,7 @@ public class GameManager : Singleton<GameManager>
 
 	void StartWave(Wave wave)
 	{
-		m_enemySpawnerMainController.Spawn(wave.division, wave.ennemiesNumer);
+		m_enemySpawnerMainController.Spawn(wave.division, (int)Random.Range(wave.countLimits.x, wave.countLimits.y));
 		Invoke("StartNextWave", wave.delay);
 	}
 

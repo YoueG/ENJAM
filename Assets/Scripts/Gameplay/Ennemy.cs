@@ -1,6 +1,16 @@
 ﻿using UnityEngine.AI;
 using UnityEngine;
 
+[System.Serializable]
+enum Pattern
+{
+	Random,
+	Tout_droit,
+	Gauche,
+	Droite,
+	ZigZag
+}
+
 public class Ennemy : MonoBehaviour
 {
 	[SerializeField]
@@ -31,7 +41,6 @@ public class Ennemy : MonoBehaviour
 	void Die(Vector3 vel)
 	{
 		GetComponent<NavMeshAgent>().enabled = false;
-		//GetComponent<Collider>().enabled = false;
 
 		Rigidbody rgbd = GetComponent<Rigidbody>();
 		rgbd.isKinematic = false;
