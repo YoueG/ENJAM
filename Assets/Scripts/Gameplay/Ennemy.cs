@@ -34,7 +34,7 @@ public class Ennemy : MonoBehaviour
 		//GetComponent<Collider>().enabled = false;
 
 		Rigidbody rgbd = GetComponent<Rigidbody>();
-		rgbd.useGravity = true;
+		rgbd.isKinematic = false;
 		rgbd.velocity = vel * m_collisionForce;
 		
 
