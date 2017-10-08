@@ -53,7 +53,7 @@ public class GameManager : Singleton<GameManager>
 
 	void StartWave(Wave wave)
 	{
-		m_enemySpawnerMainController.Spawn(wave.division, (int)Random.Range(wave.countLimits.x, wave.countLimits.y));
+		m_enemySpawnerMainController.Spawn(wave.division, (int)Random.Range(wave.countLimits.x, wave.countLimits.y), wave.pattern);
 		Invoke("StartNextWave", wave.delay);
 	}
 
