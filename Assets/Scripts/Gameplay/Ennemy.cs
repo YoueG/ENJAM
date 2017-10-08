@@ -54,24 +54,31 @@ public class Ennemy : MonoBehaviour
 
 	void UpdatePath()
 	{
-		Vector3 newDestination = transform.position;
+		Vector3 toTarget = m_target - transform.position;
 
-		switch (m_pattern)
+		if (toTarget.magnitude < 1)
+			m_agent.SetDestination(m_target);
+		else
 		{
-			case Pattern.Gauche:
-				newDestination = Quaternion.AngleAxis(-180, Vector3.up) * (m_target - transform.position).normalized;
-				break;
-			case Pattern.Droite:
-				newDestination = Quaternion.AngleAxis(180, Vector3.up) * (m_target - transform.position).normalized;
-				break;
-			case Pattern.ZigZag:
-				newDestination = Quaternion.AngleAxis(Random.Range(-180,180), Vector3.up) * (m_target - transform.position).normalized*2;
-				break;
+			Vector3 offset = transform.position;
+
+			switch (m_pattern)
+			{
+				case Pattern.Gauche:
+					offset = (Quaternion.AngleAxis(-45, Vector3.up) * toTarget).normalized*10;
+					break;
+				case Pattern.Droite:
+					offset = (Quaternion.AngleAxis(45, Vector3.up) * toTarget).normalized*10;
+					break;
+				case Pattern.ZigZag:
+					offset = (Quaternion.AngleAxis(Random.Range(-45, 45), Vector3.up) * toTarget).normalized*10;
+					break;
+			}
+
+			m_agent.SetDestination(transform.position + offset);
+
+			Invoke("UpdatePath", m_pathUpdateDelay);
 		}
-
-		m_agent.SetDestination(newDestination);
-
-		Invoke("UpdatePath", m_pathUpdateDelay);
 	}
 
 	void Die(Vector3 vel)
@@ -83,6 +90,8 @@ public class Ennemy : MonoBehaviour
 		rgbd.velocity = vel * m_collisionForce;
 
 		m_animator.SetBool("Dead", true);
+
+		CancelInvoke();
 	}
 
 	void OnCollisionEnter(Collision collision)
