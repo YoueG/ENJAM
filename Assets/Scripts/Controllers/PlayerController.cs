@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
 	GameObject m_projectile;
 	[SerializeField]
 	Transform m_spawnPoint, m_parent;
+
+    [Tooltip("The rotation speed of the ship while moving")]
+    public float m_rotatationSpeed;
 	
 	void Start ()
 	{
@@ -46,20 +49,24 @@ public class PlayerController : MonoBehaviour
 	
 	void Update ()
 	{
-		if(Input.GetKey(m_left))
+        if (Input.GetKey(m_left))
 		{
 			if (m_player.angularVelocity.y < 0)
 				m_player.angularVelocity = new Vector3(0, 0, 0);
 			else
 				m_player.angularVelocity = new Vector3(0, m_xSpeed * Time.deltaTime, 0);
-		}
+
+            m_ship.Rotate(new Vector3(0.0f, Time.deltaTime * m_rotatationSpeed, 0.0f));
+        }
 		else if(Input.GetKey(m_right))
 		{
 			if (m_player.angularVelocity.y > 0)
 				m_player.angularVelocity = new Vector3(0, 0, 0);
 			else
 				m_player.angularVelocity = new Vector3(0, -m_xSpeed * Time.deltaTime, 0);
-		}
+
+            m_ship.Rotate(new Vector3(0.0f, Time.deltaTime * -m_rotatationSpeed, 0.0f));
+        }
 
 		if(Input.GetKey(m_up))
 		{
