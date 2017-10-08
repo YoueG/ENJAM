@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainMenuController : MonoBehaviour
 {
     public Camera mainCamera;
+    public GameObject GUinterface;
     public GameObject playImageWhite;
     public GameObject playImageBlack;
 
@@ -16,6 +17,9 @@ public class MainMenuController : MonoBehaviour
         imageState  = true;
         elapsedTime = 0.0f;
         mainCamera.transform.position = new Vector3(0.96f, 6.3f, -1.94f);
+
+        // Disable the tutorial interface
+        GUinterface.SetActive(false);
     }
 	
 	void Update ()
