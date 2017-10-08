@@ -1,0 +1,54 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1072299391	music_game			\Default Work Unit\music_game	
+	1439386578	drop_cow			\Default Work Unit\drop_cow	
+	1553616936	cow_ground			\Default Work Unit\cow_ground	
+	1598298728	music_menu			\Default Work Unit\music_menu	
+	1906793063	enemies_group_pop			\Default Work Unit\enemies_group_pop	
+	1948288376	enemies_eating			\Default Work Unit\enemies_eating	
+	2419965375	enemies_climbing			\Default Work Unit\enemies_climbing	
+	2543014325	ufo_reparation			\Default Work Unit\ufo_reparation	
+	3355469630	cow_strike_enemies			\Default Work Unit\cow_strike_enemies	
+	3389385607	end_win			\Default Work Unit\end_win	
+	4036137596	end_lose			\Default Work Unit\end_lose	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	149420660	cow_strike_enemies-008	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-008_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-008		38188
+	162273476	enemies_climbing-003	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\enemies_climbing-003_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\enemies_climbing\enemies_climbing-003		382592
+	198734112	ufo_reparation	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\ufo_reparation_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\ufo_reparation		1394376
+	199399869	cow_strike_enemies	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies		32672
+	228384605	music_menu	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\music_menu_F17FB28C.wem		\Actor-Mixer Hierarchy\Default Work Unit\music_menu		5210632
+	242895486	drop_cow-004	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-004_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-004		238320
+	272442277	cow_ground-002	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_ground-002_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_ground\cow_ground-002		146120
+	288766457	drop_cow-006	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-006_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-006		257052
+	294652149	drop_cow-008	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-008_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-008		181476
+	322121403	cow_ground	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_ground_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_ground\cow_ground		382648
+	325591097	drop_cow-009	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-009_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-009		173164
+	349959223	cow_strike_enemies-007	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-007_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-007		45532
+	360841599	cow_strike_enemies-009	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-009_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-009		24196
+	376069163	cow_ground-004	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_ground-004_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_ground\cow_ground-004		145672
+	385558237	ufo_done	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\ufo_done_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\ufo_done		1720080
+	491093455	start_title	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\start_title_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\start_title		973080
+	514226455	cow_ground-003	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_ground-003_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_ground\cow_ground-003		151512
+	542258239	cow_strike_enemies-006	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-006_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-006		84704
+	587629476	cow_strike_enemies-004	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-004_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-004		42764
+	638063077	enemies_climbing-004	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\enemies_climbing-004_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\enemies_climbing\enemies_climbing-004		523420
+	674080176	cow_ground-001	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_ground-001_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_ground\cow_ground-001		124088
+	682660865	drop_cow-003	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-003_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-003		327156
+	701887866	cow_strike_enemies-003	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-003_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-003		46880
+	705729770	drop_cow-001	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-001_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-001		153148
+	713041943	cow_strike_enemies-002	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-002_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-002		44932
+	735655547	drop_cow	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow		229384
+	745691544	enemies_climbing-005	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\enemies_climbing-005_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\enemies_climbing\enemies_climbing-005		221632
+	754268204	enemies_eating	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\enemies_eating_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\enemies_eating		7560880
+	791031230	cow_strike_enemies-005	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-005_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-005		44832
+	802767318	music_final	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\music_final_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\music_final		47730520
+	805501576	enemies_group_pop	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\enemies_group_pop_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\enemies_group_pop		3516432
+	846789468	drop_cow-005	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-005_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-005		205864
+	854175036	end_lose	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\end_lose_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\end_lose		1008020
+	854759702	cow_strike_enemies-001	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\cow_strike_enemies-001_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\cow_strike_enemies\cow_strike_enemies-001		85268
+	869122667	end_win	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\end_win_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\end_win		1043748
+	870235893	drop_cow-007	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-007_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-007		231648
+	941731837	enemies_climbing-002	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\enemies_climbing-002_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\enemies_climbing\enemies_climbing-002		189800
+	1026712676	drop_cow-002	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\drop_cow-002_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\drop_cow\drop_cow-002		211160
+	1060960243	enemies_climbing-001	C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\SFX\enemies_climbing-001_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\enemies_climbing\enemies_climbing-001		380884
+

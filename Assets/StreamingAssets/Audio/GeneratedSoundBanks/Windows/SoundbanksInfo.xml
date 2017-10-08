@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="125">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Youé\Desktop\Donut Attack\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Youé\Desktop\Donut Attack\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Youé\Desktop\Donut Attack\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Youé\Desktop\Donut Attack\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3161908922" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1553616936" Name="cow_ground" ObjectPath="\Events\Default Work Unit\cow_ground"/>
+				<Event Id="3355469630" Name="cow_strike_enemies" ObjectPath="\Events\Default Work Unit\cow_strike_enemies"/>
+				<Event Id="1439386578" Name="drop_cow" ObjectPath="\Events\Default Work Unit\drop_cow"/>
+				<Event Id="4036137596" Name="end_lose" ObjectPath="\Events\Default Work Unit\end_lose"/>
+				<Event Id="3389385607" Name="end_win" ObjectPath="\Events\Default Work Unit\end_win"/>
+				<Event Id="2419965375" Name="enemies_climbing" ObjectPath="\Events\Default Work Unit\enemies_climbing"/>
+				<Event Id="1948288376" Name="enemies_eating" ObjectPath="\Events\Default Work Unit\enemies_eating"/>
+				<Event Id="1906793063" Name="enemies_group_pop" ObjectPath="\Events\Default Work Unit\enemies_group_pop"/>
+				<Event Id="1072299391" Name="music_game" ObjectPath="\Events\Default Work Unit\music_game"/>
+				<Event Id="1598298728" Name="music_menu" ObjectPath="\Events\Default Work Unit\music_menu"/>
+				<Event Id="2543014325" Name="ufo_reparation" ObjectPath="\Events\Default Work Unit\ufo_reparation"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="149420660" Language="SFX">
+					<ShortName>cow_strike_enemies-008.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-008_1C9C67B2.wem</Path>
+				</File>
+				<File Id="162273476" Language="SFX">
+					<ShortName>enemies_climbing-003.wav</ShortName>
+					<Path>SFX\enemies_climbing-003_1C9C67B2.wem</Path>
+				</File>
+				<File Id="198734112" Language="SFX">
+					<ShortName>ufo_reparation.wav</ShortName>
+					<Path>SFX\ufo_reparation_1C9C67B2.wem</Path>
+				</File>
+				<File Id="199399869" Language="SFX">
+					<ShortName>cow_strike_enemies.wav</ShortName>
+					<Path>SFX\cow_strike_enemies_1C9C67B2.wem</Path>
+				</File>
+				<File Id="228384605" Language="SFX">
+					<ShortName>music_menu.wav</ShortName>
+					<Path>SFX\music_menu_F17FB28C.wem</Path>
+				</File>
+				<File Id="242895486" Language="SFX">
+					<ShortName>drop_cow-004.wav</ShortName>
+					<Path>SFX\drop_cow-004_1C9C67B2.wem</Path>
+				</File>
+				<File Id="272442277" Language="SFX">
+					<ShortName>cow_ground-002.wav</ShortName>
+					<Path>SFX\cow_ground-002_1C9C67B2.wem</Path>
+				</File>
+				<File Id="288766457" Language="SFX">
+					<ShortName>drop_cow-006.wav</ShortName>
+					<Path>SFX\drop_cow-006_1C9C67B2.wem</Path>
+				</File>
+				<File Id="294652149" Language="SFX">
+					<ShortName>drop_cow-008.wav</ShortName>
+					<Path>SFX\drop_cow-008_1C9C67B2.wem</Path>
+				</File>
+				<File Id="322121403" Language="SFX">
+					<ShortName>cow_ground.wav</ShortName>
+					<Path>SFX\cow_ground_1C9C67B2.wem</Path>
+				</File>
+				<File Id="325591097" Language="SFX">
+					<ShortName>drop_cow-009.wav</ShortName>
+					<Path>SFX\drop_cow-009_1C9C67B2.wem</Path>
+				</File>
+				<File Id="349959223" Language="SFX">
+					<ShortName>cow_strike_enemies-007.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-007_1C9C67B2.wem</Path>
+				</File>
+				<File Id="360841599" Language="SFX">
+					<ShortName>cow_strike_enemies-009.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-009_1C9C67B2.wem</Path>
+				</File>
+				<File Id="376069163" Language="SFX">
+					<ShortName>cow_ground-004.wav</ShortName>
+					<Path>SFX\cow_ground-004_1C9C67B2.wem</Path>
+				</File>
+				<File Id="385558237" Language="SFX">
+					<ShortName>ufo_done.wav</ShortName>
+					<Path>SFX\ufo_done_1C9C67B2.wem</Path>
+				</File>
+				<File Id="491093455" Language="SFX">
+					<ShortName>start_title.wav</ShortName>
+					<Path>SFX\start_title_1C9C67B2.wem</Path>
+				</File>
+				<File Id="514226455" Language="SFX">
+					<ShortName>cow_ground-003.wav</ShortName>
+					<Path>SFX\cow_ground-003_1C9C67B2.wem</Path>
+				</File>
+				<File Id="542258239" Language="SFX">
+					<ShortName>cow_strike_enemies-006.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-006_1C9C67B2.wem</Path>
+				</File>
+				<File Id="587629476" Language="SFX">
+					<ShortName>cow_strike_enemies-004.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-004_1C9C67B2.wem</Path>
+				</File>
+				<File Id="638063077" Language="SFX">
+					<ShortName>enemies_climbing-004.wav</ShortName>
+					<Path>SFX\enemies_climbing-004_1C9C67B2.wem</Path>
+				</File>
+				<File Id="674080176" Language="SFX">
+					<ShortName>cow_ground-001.wav</ShortName>
+					<Path>SFX\cow_ground-001_1C9C67B2.wem</Path>
+				</File>
+				<File Id="682660865" Language="SFX">
+					<ShortName>drop_cow-003.wav</ShortName>
+					<Path>SFX\drop_cow-003_1C9C67B2.wem</Path>
+				</File>
+				<File Id="701887866" Language="SFX">
+					<ShortName>cow_strike_enemies-003.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-003_1C9C67B2.wem</Path>
+				</File>
+				<File Id="705729770" Language="SFX">
+					<ShortName>drop_cow-001.wav</ShortName>
+					<Path>SFX\drop_cow-001_1C9C67B2.wem</Path>
+				</File>
+				<File Id="713041943" Language="SFX">
+					<ShortName>cow_strike_enemies-002.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-002_1C9C67B2.wem</Path>
+				</File>
+				<File Id="735655547" Language="SFX">
+					<ShortName>drop_cow.wav</ShortName>
+					<Path>SFX\drop_cow_1C9C67B2.wem</Path>
+				</File>
+				<File Id="745691544" Language="SFX">
+					<ShortName>enemies_climbing-005.wav</ShortName>
+					<Path>SFX\enemies_climbing-005_1C9C67B2.wem</Path>
+				</File>
+				<File Id="754268204" Language="SFX">
+					<ShortName>enemies_eating.wav</ShortName>
+					<Path>SFX\enemies_eating_1C9C67B2.wem</Path>
+				</File>
+				<File Id="791031230" Language="SFX">
+					<ShortName>cow_strike_enemies-005.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-005_1C9C67B2.wem</Path>
+				</File>
+				<File Id="802767318" Language="SFX">
+					<ShortName>music_final.wav</ShortName>
+					<Path>SFX\music_final_1C9C67B2.wem</Path>
+				</File>
+				<File Id="805501576" Language="SFX">
+					<ShortName>enemies_group_pop.wav</ShortName>
+					<Path>SFX\enemies_group_pop_1C9C67B2.wem</Path>
+				</File>
+				<File Id="846789468" Language="SFX">
+					<ShortName>drop_cow-005.wav</ShortName>
+					<Path>SFX\drop_cow-005_1C9C67B2.wem</Path>
+				</File>
+				<File Id="854175036" Language="SFX">
+					<ShortName>end_lose.wav</ShortName>
+					<Path>SFX\end_lose_1C9C67B2.wem</Path>
+				</File>
+				<File Id="854759702" Language="SFX">
+					<ShortName>cow_strike_enemies-001.wav</ShortName>
+					<Path>SFX\cow_strike_enemies-001_1C9C67B2.wem</Path>
+				</File>
+				<File Id="869122667" Language="SFX">
+					<ShortName>end_win.wav</ShortName>
+					<Path>SFX\end_win_1C9C67B2.wem</Path>
+				</File>
+				<File Id="870235893" Language="SFX">
+					<ShortName>drop_cow-007.wav</ShortName>
+					<Path>SFX\drop_cow-007_1C9C67B2.wem</Path>
+				</File>
+				<File Id="941731837" Language="SFX">
+					<ShortName>enemies_climbing-002.wav</ShortName>
+					<Path>SFX\enemies_climbing-002_1C9C67B2.wem</Path>
+				</File>
+				<File Id="1026712676" Language="SFX">
+					<ShortName>drop_cow-002.wav</ShortName>
+					<Path>SFX\drop_cow-002_1C9C67B2.wem</Path>
+				</File>
+				<File Id="1060960243" Language="SFX">
+					<ShortName>enemies_climbing-001.wav</ShortName>
+					<Path>SFX\enemies_climbing-001_1C9C67B2.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
