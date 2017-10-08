@@ -33,6 +33,8 @@ public class Projectile : MonoBehaviour
 	public void OnCollisionEnter(Collision collision)
 	{
 		m_rigidbody.useGravity = true;
+		m_rigidbody.velocity = new Vector3(transform.position.normalized.x*4, 1, transform.position.normalized.z*4);
+		m_rigidbody.angularVelocity = new Vector3(Random.Range(-90,90), Random.Range(-90, 90), Random.Range(-90, 90));
 		transform.SetParent(m_parent);
 		Destroy(this);
 	}
