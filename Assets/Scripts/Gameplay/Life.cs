@@ -3,7 +3,10 @@
 public class Life : MonoBehaviour
 {
 	[SerializeField, Range(0,1)]
-	float m_life = 1;
+	float m_life = 1, m_ennemiesDamages = 0.1f;
+
+	[SerializeField]
+	GameObject[] m_donuts;
 
 	void Start ()
 	{
@@ -18,11 +21,23 @@ public class Life : MonoBehaviour
 		AkSoundEngine.PostEvent("ufo_reparation", gameObject);
 	}
 
-	public void TakeDamages(float damages)
+	public void TakeDamages()
 	{
-		m_life -= damages;
+		m_life -= m_ennemiesDamages;
 
 		if (m_life <= 0)
 			GameManager.Instance.EndGame(false);
+		else
+		{
+			EnableShipPart((int)((1 - m_life) * (m_donuts.Length + 1)));
+		}
+	}
+
+	void EnableShipPart(int ID)
+	{
+		foreach (var g in m_donuts)
+			g.active = false;
+
+		m_donuts[ID].active = true;
 	}
 }

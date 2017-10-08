@@ -54,6 +54,9 @@ public class GameManager : Singleton<GameManager>
 
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+			Application.Quit();
+
 		switch (m_state)
 		{
 			case GameState.Intro:

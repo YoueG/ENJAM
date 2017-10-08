@@ -24,6 +24,8 @@ public class Ennemy : MonoBehaviour
 	float m_collisionForce;
 	[SerializeField, Range(0, 10)]
 	float m_pathUpdateDelay;
+	[SerializeField, Range(0, 10)]
+	float m_attackTime = 1;
 
 	Pattern m_pattern;
 	NavMeshAgent m_agent;
@@ -35,6 +37,11 @@ public class Ennemy : MonoBehaviour
 		// Randomise enemies
 		m_buste.transform.localScale = new Vector3(Random.Range(0, 2) == 1 ? -1 : 1, 1, 1);
 		m_weaponParent.GetChild(Random.Range(0, m_weaponParent.childCount)).gameObject.SetActive(true);
+	}
+
+	void Attack()
+	{
+		m_ship.TakeDamages();
 	}
 
 	public void SetPattern(Pattern pattern, Vector3 target, float speed)
@@ -52,7 +59,7 @@ public class Ennemy : MonoBehaviour
 		else
 			UpdatePath();
 	}
-
+	
 	void UpdatePath()
 	{
 		Vector3 toTarget = m_target - transform.position;
@@ -90,7 +97,6 @@ public class Ennemy : MonoBehaviour
 		m_agent.enabled = false;
 
 		Rigidbody rgbd = GetComponent<Rigidbody>();
-		rgbd.isKinematic = false;
 		rgbd.velocity = vel * m_collisionForce;
 
 		m_animator.SetBool("Dead", true);
@@ -98,6 +104,7 @@ public class Ennemy : MonoBehaviour
 		CancelInvoke();
 	}
 
+	Life m_ship;
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("Projectile"))
@@ -105,8 +112,11 @@ public class Ennemy : MonoBehaviour
 			AkSoundEngine.PostEvent("cow_strike_enemies", gameObject);
 			Die(collision.contacts[0].normal);
 		}
-		//else if (collision.gameObject.CompareTag("Friend"))
+		else if (collision.gameObject.CompareTag("Friend"))
 		{
+			m_agent.enabled = false;
+			m_ship = collision.gameObject.GetComponent<Life>();
+			InvokeRepeating("Attack", m_attackTime, m_attackTime);
 			AkSoundEngine.PostEvent("enemies_eating", gameObject);
 		}
 	}
