@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("The rotation speed of the ship while moving")]
     public float m_rotatationSpeed;
+
+    [Tooltip("The cow will be destroy in x seconds")]
+    public float m_cowDestructionDelay;
 	
 	void Start ()
 	{
@@ -87,6 +90,7 @@ public class PlayerController : MonoBehaviour
 			m_nextShotTime = m_reloadTime;
 			GameObject newProjectile = Instantiate(m_projectile, m_spawnPoint.position, transform.rotation, m_spawnPoint);
 			newProjectile.GetComponent<Projectile>().SetParentOnCollision(m_parent);
+            Destroy(newProjectile, m_cowDestructionDelay);
 		}
 		else
 		{
