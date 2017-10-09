@@ -59,7 +59,7 @@ public class Ennemy : MonoBehaviour
 		
 		AkSoundEngine.PostEvent("enemies_eating", gameObject);
 
-		m_agent.SetDestination(m_initPos);
+		SetDestination(m_initPos);
 
 		m_rgbd.isKinematic = true;
 		//m_rgbd.useGravity = true;
@@ -82,7 +82,9 @@ public class Ennemy : MonoBehaviour
 			m_pattern = (Pattern)Random.Range(1, 5);
 
 		if (m_pattern == Pattern.Tout_droit)
-			m_agent.SetDestination(target);
+		{
+			SetDestination(target);
+		}
 		else
 			UpdatePath();
 	}
@@ -104,11 +106,12 @@ public class Ennemy : MonoBehaviour
 	{
 		Vector3 toTarget = m_target - transform.position;
 
-		if (toTarget.magnitude < 1.2)
+		if (toTarget.magnitude < 1.4 && !m_attackMode)
 		{
 			m_rgbd.isKinematic = false;
 			m_rgbd.useGravity = true;
-			m_agent.SetDestination(m_target);
+			SetDestination(m_target);
+
 			AkSoundEngine.PostEvent("enemies_climbing", gameObject);
 		}
 		else
@@ -128,9 +131,19 @@ public class Ennemy : MonoBehaviour
 					break;
 			}
 
-			m_agent.SetDestination(transform.position + offset);
+			SetDestination(transform.position + offset);
 
 			Invoke("UpdatePath", m_pathUpdateDelay);
+		}
+	}
+
+	void SetDestination (Vector3 v)
+	{
+		m_agent.SetDestination(v);
+
+		foreach (Transform t in transform)
+		{
+			t.LookAt(v);
 		}
 	}
 

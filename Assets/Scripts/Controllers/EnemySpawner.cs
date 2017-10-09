@@ -49,12 +49,14 @@ public class EnemySpawner : MonoBehaviour
 		if(ennemiesCount > 5)
 			AkSoundEngine.PostEvent("enemies_group_pop", gameObject);
 
+		Pattern test = Pattern.Random;
+
 		for (int n = 0; n < ennemiesCount; ++n)
 		{
 			ennemy = Instantiate(ennemyPrefab, randomPos + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)), Quaternion.identity); // Randomizes spawns location
 			ennemy.transform.parent = m_parent;
 
-			ennemy.GetComponent<Ennemy>().SetPattern(wave.pattern, m_friend.position, wave.speed);
+			ennemy.GetComponent<Ennemy>().SetPattern(test, m_friend.position, wave.speed);
 		}
 	}
 }
