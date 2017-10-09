@@ -42,13 +42,26 @@ public class Ennemy : MonoBehaviour
 		m_rgbd = GetComponent<Rigidbody>();
 	}
 
+	Life m_ship;
+	public void StartAttack(Life ship)
+	{
+		m_attackMode = true;
+		m_agent.enabled = false;
+		m_ship = ship;
+		AkSoundEngine.PostEvent("enemies_climbing", gameObject);
+		Invoke("Attack", m_attackDelay);
+	}
+
 	void Attack()
 	{
+		m_agent.enabled = true;
 		m_ship.TakeDamages();
+		
 		AkSoundEngine.PostEvent("enemies_eating", gameObject);
-		m_animator.Play("End");
 
-		Die(Vector3.zero);
+		m_agent.SetDestination((transform.position - m_target) * 100);
+
+		//Die(Vector3.zero);
 	}
 
 	public void SetPattern(Pattern pattern, Vector3 target, float speed)
@@ -77,8 +90,8 @@ public class Ennemy : MonoBehaviour
 			m_rgbd.isKinematic = false;
 			m_rgbd.useGravity = true;
 			m_rgbd.constraints = RigidbodyConstraints.FreezeAll;
-			m_agent.SetDestination(m_target);
-			AkSoundEngine.PostEvent("enemies_climbing", gameObject);
+			
+			
 
 			m_attackMode = true;
 		}
@@ -131,20 +144,13 @@ public class Ennemy : MonoBehaviour
 
 		CancelInvoke();
 	}
-
-	Life m_ship;
+	
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("Projectile"))
 		{
 			AkSoundEngine.PostEvent("cow_strike_enemies", gameObject);
 			Die(collision.contacts[0].normal);
-		}
-		else if (collision.gameObject.CompareTag("Friend"))
-		{
-			m_agent.enabled = false;
-			m_ship = collision.gameObject.GetComponent<Life>();
-			Invoke("Attack", m_attackDelay);
 		}
 	}
 }

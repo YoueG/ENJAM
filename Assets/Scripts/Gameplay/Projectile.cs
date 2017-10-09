@@ -28,19 +28,24 @@ public class Projectile : MonoBehaviour
 			transform.localPosition = new Vector3(0, transform.localPosition.y - (m_speed * Time.deltaTime), 0);
 			transform.localRotation = Quaternion.identity;
 		}
-		else if(m_rigidbody.velocity.sqrMagnitude < .1f)
+		else if(m_rigidbody.velocity.sqrMagnitude < .01f)
 		{
-			print("tes");
+			GetComponent<Collider>().isTrigger = true;
 		}
 	}
 
+	bool m_triggered = false;
 	public void OnCollisionEnter(Collision collision)
 	{
-		AkSoundEngine.PostEvent("cow_ground", gameObject);
-		m_rigidbody.useGravity = true;
-		m_rigidbody.velocity = new Vector3(transform.position.normalized.x*4, 1, transform.position.normalized.z*4);
-		m_rigidbody.angularVelocity = new Vector3(Random.Range(-90,90), Random.Range(-90, 90), Random.Range(-90, 90));
-		transform.SetParent(m_parent);
-		//Destroy(this);
+		if(!m_triggered)
+		{
+			AkSoundEngine.PostEvent("cow_ground", gameObject);
+			m_rigidbody.useGravity = true;
+			m_rigidbody.velocity = new Vector3(transform.position.normalized.x * 4, 1, transform.position.normalized.z * 4);
+			m_rigidbody.angularVelocity = new Vector3(Random.Range(-90, 90), Random.Range(-90, 90), Random.Range(-90, 90));
+			transform.SetParent(m_parent);
+			m_triggered = true;
+		}
+
 	}
 }

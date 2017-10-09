@@ -11,9 +11,12 @@ public class Life : MonoBehaviour
 	void Start ()
 	{
 	}
-	
-	void Update ()
+
+	public void OnCollisionEnter(Collision collision)
 	{
+		Ennemy ennemy = collision.gameObject.GetComponent<Ennemy>();
+		if (ennemy)
+			ennemy.StartAttack(this);
 	}
 
 	void Repare()
