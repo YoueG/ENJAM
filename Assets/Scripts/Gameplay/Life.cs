@@ -23,21 +23,24 @@ public class Life : MonoBehaviour
 
 	public void TakeDamages()
 	{
-		m_life -= m_ennemiesDamages;
-
-		if (m_life <= 0)
-			GameManager.Instance.EndGame(false);
-		else
+		if(m_life > 0)
 		{
-			EnableShipPart((int)((1 - m_life) * (m_donuts.Length + 1)));
+			m_life -= m_ennemiesDamages;
+
+			if (m_life <= 0)
+				GameManager.Instance.EndGame(false);
+			else
+			{
+				EnableShipPart((int)((1 - m_life) * (m_donuts.Length + 1)));
+			}
 		}
 	}
 
 	void EnableShipPart(int ID)
 	{
 		foreach (var g in m_donuts)
-			g.active = false;
+			g.SetActive(false);
 
-		m_donuts[ID].active = true;
+		m_donuts[ID].SetActive(true);
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct Wave
@@ -44,6 +45,7 @@ public class GameManager : Singleton<GameManager>
 	float m_gameTime = 0;
 	float m_nextWaveTime;
 	
+	[SerializeField]
 	float m_tutoTime = 5;
 	float m_tutoStartTime;
 
@@ -54,13 +56,12 @@ public class GameManager : Singleton<GameManager>
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-			Application.Quit();
-
 		switch (m_state)
 		{
 			case GameState.Intro:
-				if (Input.anyKeyDown)
+				if (Input.GetKeyDown(KeyCode.Escape))
+					Application.Quit();
+				else if (Input.anyKeyDown)
 				{
 					m_UIAnimator.Play("Intro_End");
 					m_tutoStartTime = Time.time;
@@ -68,7 +69,9 @@ public class GameManager : Singleton<GameManager>
 				}
 				break;
 			case GameState.Tutorial:
-				if(Time.time > m_tutoStartTime + m_tutoTime)
+				if (Input.GetKeyDown(KeyCode.Escape))
+					Restart();
+				else if (Time.time > m_tutoStartTime + m_tutoTime)
 				{
 					m_UIAnimator.Play("Tuto_End");
 					AkSoundEngine.PostEvent("music_game", gameObject);
@@ -78,7 +81,9 @@ public class GameManager : Singleton<GameManager>
 				}
 				break;
 			case GameState.Main:
-				if (m_alive)
+				if (Input.GetKeyDown(KeyCode.Escape))
+					Restart();
+				else if (m_alive)
 				{
 					m_gameTime += Time.deltaTime;
 
@@ -133,6 +138,12 @@ public class GameManager : Singleton<GameManager>
 		}
 			
 		m_gameTime++;
+	}
+
+	public void Restart()
+	{
+		AkSoundEngine.StopAll();
+		SceneManager.LoadScene(0);
 	}
 
 	public float GetGameTime()

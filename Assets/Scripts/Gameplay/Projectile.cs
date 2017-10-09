@@ -28,6 +28,10 @@ public class Projectile : MonoBehaviour
 			transform.localPosition = new Vector3(0, transform.localPosition.y - (m_speed * Time.deltaTime), 0);
 			transform.localRotation = Quaternion.identity;
 		}
+		else if(m_rigidbody.velocity.sqrMagnitude < .1f)
+		{
+			print("tes");
+		}
 	}
 
 	public void OnCollisionEnter(Collision collision)
@@ -37,6 +41,6 @@ public class Projectile : MonoBehaviour
 		m_rigidbody.velocity = new Vector3(transform.position.normalized.x*4, 1, transform.position.normalized.z*4);
 		m_rigidbody.angularVelocity = new Vector3(Random.Range(-90,90), Random.Range(-90, 90), Random.Range(-90, 90));
 		transform.SetParent(m_parent);
-		Destroy(this);
+		//Destroy(this);
 	}
 }

@@ -25,10 +25,11 @@ public class Ennemy : MonoBehaviour
 	[SerializeField, Range(0, 10)]
 	float m_pathUpdateDelay;
 	[SerializeField, Range(0, 10)]
-	float m_attackTime = 1;
+	float m_attackDelay = 1;
 
 	Pattern m_pattern;
 	NavMeshAgent m_agent;
+	Rigidbody m_rgbd;
 
 	Vector3 m_target;
 
@@ -37,11 +38,17 @@ public class Ennemy : MonoBehaviour
 		// Randomise enemies
 		m_buste.transform.localScale = new Vector3(Random.Range(0, 2) == 1 ? -1 : 1, 1, 1);
 		m_weaponParent.GetChild(Random.Range(0, m_weaponParent.childCount)).gameObject.SetActive(true);
+
+		m_rgbd = GetComponent<Rigidbody>();
 	}
 
 	void Attack()
 	{
 		m_ship.TakeDamages();
+		AkSoundEngine.PostEvent("enemies_eating", gameObject);
+		m_animator.Play("End");
+
+		Die(Vector3.zero);
 	}
 
 	public void SetPattern(Pattern pattern, Vector3 target, float speed)
@@ -59,13 +66,32 @@ public class Ennemy : MonoBehaviour
 		else
 			UpdatePath();
 	}
+
+	bool m_attackMode = false;
+	void Update()
+	{
+		Vector3 toTarget = m_target - transform.position;
+
+		if (toTarget.magnitude < 1.2 && !m_attackMode)
+		{
+			m_rgbd.isKinematic = false;
+			m_rgbd.useGravity = true;
+			m_rgbd.constraints = RigidbodyConstraints.FreezeAll;
+			m_agent.SetDestination(m_target);
+			AkSoundEngine.PostEvent("enemies_climbing", gameObject);
+
+			m_attackMode = true;
+		}
+	}
 	
 	void UpdatePath()
 	{
 		Vector3 toTarget = m_target - transform.position;
 
-		if (toTarget.magnitude < 1)
+		if (toTarget.magnitude < 1.2)
 		{
+			m_rgbd.isKinematic = false;
+			m_rgbd.useGravity = true;
 			m_agent.SetDestination(m_target);
 			AkSoundEngine.PostEvent("enemies_climbing", gameObject);
 		}
@@ -95,12 +121,13 @@ public class Ennemy : MonoBehaviour
 	void Die(Vector3 vel)
 	{
 		m_agent.enabled = false;
-
-		Rigidbody rgbd = GetComponent<Rigidbody>();
-		rgbd.velocity = vel * m_collisionForce;
-		rgbd.isKinematic = false;
+		
+		m_rgbd.velocity = vel * m_collisionForce;
+		m_rgbd.useGravity = true;
+		m_rgbd.isKinematic = false;
 
 		m_animator.SetBool("Dead", true);
+		m_rgbd.angularVelocity = new Vector3(Random.Range(-90, 90), Random.Range(-90, 90), Random.Range(-90, 90));
 
 		CancelInvoke();
 	}
@@ -117,8 +144,7 @@ public class Ennemy : MonoBehaviour
 		{
 			m_agent.enabled = false;
 			m_ship = collision.gameObject.GetComponent<Life>();
-			InvokeRepeating("Attack", m_attackTime, m_attackTime);
-			AkSoundEngine.PostEvent("enemies_eating", gameObject);
+			Invoke("Attack", m_attackDelay);
 		}
 	}
 }
