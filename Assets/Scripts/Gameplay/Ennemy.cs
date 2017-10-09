@@ -59,17 +59,24 @@ public class Ennemy : MonoBehaviour
 		
 		AkSoundEngine.PostEvent("enemies_eating", gameObject);
 
-		m_agent.SetDestination((transform.position - m_target) * 100);
+		m_agent.SetDestination(m_initPos);
+
+		m_rgbd.isKinematic = true;
+		//m_rgbd.useGravity = true;
+		m_rgbd.constraints = RigidbodyConstraints.None;
 
 		//Die(Vector3.zero);
 	}
 
+	Vector3 m_initPos;
 	public void SetPattern(Pattern pattern, Vector3 target, float speed)
 	{
 		m_pattern = pattern;
 		m_target = target;
 		m_agent = GetComponent<NavMeshAgent>();
 		m_agent.speed = speed;
+
+		m_initPos = transform.position;
 
 		if (m_pattern == Pattern.Random)
 			m_pattern = (Pattern)Random.Range(1, 5);
@@ -90,10 +97,6 @@ public class Ennemy : MonoBehaviour
 			m_rgbd.isKinematic = false;
 			m_rgbd.useGravity = true;
 			m_rgbd.constraints = RigidbodyConstraints.FreezeAll;
-			
-			
-
-			m_attackMode = true;
 		}
 	}
 	
@@ -134,8 +137,10 @@ public class Ennemy : MonoBehaviour
 	void Die(Vector3 vel)
 	{
 		m_agent.enabled = false;
+
+		GetComponent<Collider>().isTrigger = true;
 		
-		m_rgbd.velocity = vel * m_collisionForce;
+		m_rgbd.velocity = (vel + Vector3.up) * m_collisionForce;
 		m_rgbd.useGravity = true;
 		m_rgbd.isKinematic = false;
 
@@ -144,7 +149,7 @@ public class Ennemy : MonoBehaviour
 
 		CancelInvoke();
 	}
-	
+
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("Projectile"))

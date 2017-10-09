@@ -129,14 +129,18 @@ public class GameManager : Singleton<GameManager>
 		{
 			AkSoundEngine.PostEvent("end_win", gameObject);
 			m_UIAnimator.Play("End_Start_Win");
+
+			Invoke("Restart", 5);
 		}
 		else
 		{
 			m_alive = false;
 			AkSoundEngine.PostEvent("end_lose", gameObject);
 			m_UIAnimator.Play("End_Start_Lose");
+
+			Invoke("Restart", 5);
 		}
-			
+
 		m_gameTime++;
 	}
 

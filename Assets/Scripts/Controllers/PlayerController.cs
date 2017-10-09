@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
 	[SerializeField]
 	Rigidbody m_player;
+	[SerializeField]
+	Animation m_animAttack;
 
 	[Header("Controls")]
 	[SerializeField]
@@ -76,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyDown(m_fire) && m_nextShotTime <= 0)
 		{
+			m_animAttack.Play();
 			AkSoundEngine.PostEvent("drop_cow", gameObject);
 			m_nextShotTime = m_reloadTime;
 			GameObject newProjectile = Instantiate(m_projectile, m_spawnPoint.position, transform.rotation, m_spawnPoint);
