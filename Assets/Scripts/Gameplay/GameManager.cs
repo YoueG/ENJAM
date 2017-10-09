@@ -85,6 +85,7 @@ public class GameManager : Singleton<GameManager>
 					if(m_gameTime > 270)
 					{
 						EndGame (true);
+						m_state++;
 					}
 				}
 				break;

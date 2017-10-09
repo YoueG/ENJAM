@@ -98,6 +98,7 @@ public class Ennemy : MonoBehaviour
 
 		Rigidbody rgbd = GetComponent<Rigidbody>();
 		rgbd.velocity = vel * m_collisionForce;
+		rgbd.isKinematic = false;
 
 		m_animator.SetBool("Dead", true);
 
